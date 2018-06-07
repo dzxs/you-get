@@ -234,7 +234,7 @@ def match1(text, *patterns):
 
     if len(patterns) == 1:
         pattern = patterns[0]
-        match = re.search(pattern, text)
+        match = re.search(pattern, str(text))
         if match:
             return match.group(1)
         else:
