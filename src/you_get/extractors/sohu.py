@@ -27,14 +27,19 @@ def sohu_download(url, output_dir = '.', merge = True, info_only = False, extrac
         vid = r1(r'\Wvid\s*[\:=]\s*[\'"]?(\d+)[\'"]?', html)
     assert vid
 
-    if re.match(r'http://tv.sohu.com/', url):
+    if re.match(r'http[s]://tv.sohu.com/', url):
         if extractor_proxy:
             set_proxy(tuple(extractor_proxy.split(":")))
         info = json.loads(get_decoded_html('http://hot.vrs.sohu.com/vrs_flash.action?vid=%s' % vid))
         for qtyp in ["oriVid","superVid","highVid" ,"norVid","relativeId"]:
-            hqvid = info['data'][qtyp]
+            if 'data' in info:
+                hqvid = info['data'][qtyp]
+            else:
+                hqvid = info[qtyp]
             if hqvid != 0 and hqvid != vid :
                 info = json.loads(get_decoded_html('http://hot.vrs.sohu.com/vrs_flash.action?vid=%s' % hqvid))
+                if not 'allot' in info:
+                    continue
                 break
         if extractor_proxy:
             unset_proxy()
