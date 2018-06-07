@@ -57,6 +57,7 @@ from .nicovideo import *
 from .panda import *
 from .pinterest import *
 from .pixnet import *
+from .pornhub import *
 from .pptv import *
 from .qie import *
 from .qingting import *
