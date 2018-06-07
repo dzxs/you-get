@@ -88,6 +88,7 @@ SITES = {
     'panda'            : 'panda',
     'pinterest'        : 'pinterest',
     'pixnet'           : 'pixnet',
+    'pornhub'       : 'pornhub',
     'pptv'             : 'pptv',
     'qingting'         : 'qingting',
     'qq'               : 'qq',
